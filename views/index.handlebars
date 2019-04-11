@@ -1,0 +1,32 @@
+<h1>Best D@mn Burger!</h1>
+
+<h2>Let us know what's the best d@mn burger you've had. Add a new one if you don't see your's listed!</h2>
+
+<ul>
+    {{#each burgers}}
+        {{#if devoured}}
+        {{!-- What is this line doing? --}}
+         {{> burgers/burger-black devoured=false}}
+        {{/if}}
+    {{/each}}
+</ul>
+
+<ul>
+    {{#each burgers}}
+        {{#unless burgers}}
+        {{!-- What is this line doing? --}}
+            {{> burgers/burger-block devoured=true}}
+        {{/unless}}
+     {{/each}}   
+</ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+    <div class="form-group">
+        <label for="bu">Burger Name:</label>
+        <input type="text" id="bu" name="burger_name">
+    </div>
+
+    <button type="submit">Add burger</button>   
+
+</form>
