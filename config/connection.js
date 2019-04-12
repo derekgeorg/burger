@@ -1,4 +1,4 @@
-var msql = require("msql");
+var mysql = require("mysql");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -13,7 +13,7 @@ connection.connect(function(err) {
         console.log("error connecting: " + err.stack);
         return;
     }
-    console.log("connected as id " + connnection.threadId);
+    console.log("connected as id " + connection.threadId);
 });
 
 module.exports = connection
