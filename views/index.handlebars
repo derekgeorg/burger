@@ -1,16 +1,13 @@
-<div id="t" style="display: none">
-    <img class="someClass" src="{{cdn0.iconfinder.com/data/icons/food-2-11/128/food-13-512.png}}">
-</div>
-
 <h1>Best D@mn Burger!</h1>
 
 <h2>Submit the best burger you've ever had.</h2>
 <h4>Hungry? Click the "DEVOUR!" button to put that bad boy away.</h4>
+
 <ul>
     {{#each burgers}}
         {{#if devoured}}
-        {{!-- What is this line doing? --}}
-         {{> burgers/burger-block devoured=false}}
+        {{!-- What is this line doing? Partials? --}}
+         {{> burgers/burger-block devoured=true}}
         {{/if}}
     {{/each}}
 </ul>
@@ -19,16 +16,19 @@
     {{#each burgers}}
         {{#unless burgers}}
         {{!-- What is this line doing? --}}
-            {{> burgers/burger-block devoured=true}}
+            {{> burgers/burger-block devoured=false}}
         {{/unless}}
      {{/each}}   
 </ul>
 
+
+
 <h2>Add a Burger</h2>
 <form class="create-form">
+
     <div class="form-group">
         <label for="bu">Burger Name:</label>
-        <input type="text" id="bu" name="burger_name">
+        <input type="text" id="bu" name="name">
     </div>
 
     <button type="submit">Add burger</button>   

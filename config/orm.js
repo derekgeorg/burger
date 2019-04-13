@@ -33,18 +33,18 @@ function printQuestionMarks(num) {
 
 //Need some help here with the methods
 var orm = {
-    selectAll: function(tableInsert, cb){
+    selectAll: function(tableInsert, cb) {
         var queryString = "SELECT * FROM " + tableInsert + ";";
         connection.query(queryString, function(err, res){
             if (err) {
-                throw error;
+                throw err;
             }
             cb(res);
         });
 
     },
 
-    insertOne: function(table, cols, vals, cb){
+    insertOne: function(table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
         // matches seeds.sql format
         queryString += " (";
@@ -55,7 +55,7 @@ var orm = {
         queryString += ") ";
         
         console.log(queryString);
-        connection.query(queryString, vals, function(err, res){
+        connection.query(queryString, function(err, res){
             if (err) {
                 throw err;
             }
@@ -79,6 +79,20 @@ var orm = {
             }
             cb(res);
         });
+    },
+
+    delete: function(table, condition, cb) {
+      var queryString = "DELETE FROM " + table;
+      queryString += " WHERE ";
+      queryString += condition;
+
+      connection.query(queryString, function(err, res) {
+        if (err) {
+          throw err;
+        }
+
+        cb(res);
+      });
     }
 };
 

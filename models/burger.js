@@ -6,7 +6,7 @@ var burgers = {
             cb(res);
           });
         },
-        // The variables cols and vals are arrays.
+        
         create: function(name, cb) {
           orm.insertOne("burgers",[
               "burger_name", "devoured"
@@ -21,6 +21,8 @@ var burgers = {
             cb(res);
           });
         },
+
+        
         delete: function(condition, cb) {
           orm.delete("burgers", condition, function(res) {
             cb(res);
