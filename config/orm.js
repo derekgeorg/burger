@@ -19,7 +19,6 @@ function printQuestionMarks(num) {
       var value = ob[key];
       // check to skip hidden properties
       if (Object.hasOwnProperty.call(ob, key)) {
-        // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
         if (typeof value === "string" && value.indexOf(" ") >= 0) {
           value = "'" + value + "'";
         }
@@ -27,7 +26,7 @@ function printQuestionMarks(num) {
       }
     }
   
-    // translate array of strings to a single comma-separated string
+    
     return arr.toString();
   }
   
@@ -56,7 +55,7 @@ var orm = {
         queryString += ") ";
         
         console.log(queryString);
-        connection.query(queryString, function(err, res){
+        connection.query(queryString, vals, function(err, res){
             if (err) {
                 throw err;
             }
@@ -67,7 +66,7 @@ var orm = {
     updateOne: function(table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
         //Need somthing here
-        
+
         queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
